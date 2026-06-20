@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cinemakez — Moments Into Motion</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#06040D;
+  --deep:#0D0A1A;
+  --card:#13102A;
+  --purple:#7B2FBE;
+  --violet:#A855F7;
+  --violet-light:#C084FC;
+  --gold:#F59E0B;
+  --pearl:#F8F8FF;
+  --muted:rgba(248,248,255,0.55);
+  --border:rgba(168,85,247,0.18);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);
+  color:var(--pearl);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.5rem;
+  background:rgba(6,4,13,0.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;letter-spacing:0.08em;
+  color:var(--pearl);
+}
+.nav-logo span{color:var(--violet)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--purple),var(--violet));
+  color:#fff;border:none;
+  padding:0.55rem 1.2rem;
+  border-radius:50px;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.05em;
+  cursor:pointer;text-decoration:none;
+  white-space:nowrap;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.nav-cta:hover{transform:scale(1.04);box-shadow:0 0 20px rgba(168,85,247,0.5)}
+
+/* HERO */
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:7rem 1.5rem 3rem;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(123,47,190,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(168,85,247,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(245,158,11,0.08) 0%, transparent 60%),
+    var(--void);
+  z-index:0;
+}
+.grain{
+  position:absolute;inset:0;z-index:1;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+.letterbox-top,.letterbox-bottom{
+  position:absolute;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,transparent,var(--violet),var(--gold),var(--violet),transparent);
+  z-index:3;
+}
+.letterbox-top{top:0}.letterbox-bottom{bottom:0}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:0.72rem;font-weight:600;letter-spacing:0.2em;
+  color:var(--violet-light);text-transform:uppercase;
+  border:1px solid rgba(168,85,247,0.35);
+  padding:0.35rem 1rem;border-radius:50px;
+  margin-bottom:1.8rem;
+}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,18vw,7.5rem);
+  line-height:0.92;
+  letter-spacing:0.03em;
+  margin-bottom:1rem;
+}
+.hero-title .line1{color:var(--pearl)}
+.hero-title .line2{color:var(--pearl)}
+.hero-title .line3{
+  color:transparent;
+  -webkit-text-stroke:2px var(--violet);
+  font-size:clamp(4.5rem,20vw,8.5rem);
+}
+.hero-sub{
+  font-size:clamp(0.85rem,2.5vw,1rem);
+  color:var(--muted);
+  font-weight:300;letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:2.5rem;
+  line-height:1.8;
+}
+.hero-sub strong{color:var(--violet-light);font-weight:500}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,var(--purple) 0%,var(--violet) 100%);
+  color:#fff;border:none;
+  padding:1rem 2rem;border-radius:50px;
+  font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;gap:0.5rem;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 30px rgba(123,47,190,0.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(168,85,247,0.5)}
+.btn-ghost{
+  background:transparent;
+  color:var(--pearl);
+  border:1px solid rgba(248,248,255,0.25);
+  padding:1rem 2rem;border-radius:50px;
+  font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;gap:0.5rem;
+  transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:var(--violet);color:var(--violet-light)}
+.badge-same-day{
+  margin-top:2rem;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);
+  color:var(--gold);padding:0.4rem 1rem;border-radius:50px;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.1em;
+}
+
+/* SECTION SHARED */
+section{padding:5rem 1.5rem;position:relative}
+.section-label{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:0.6rem;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,8vw,4rem);
+  line-height:1;letter-spacing:0.04em;
+  margin-bottom:1rem;
+}
+.section-sub{color:var(--muted);font-size:0.95rem;line-height:1.7;max-width:560px}
+.divider{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,var(--violet),var(--gold));
+  border-radius:2px;margin:1.2rem 0;
+}
+
+/* GALLERY STRIP */
+.gallery-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  margin:3rem -1.5rem 0;
+  overflow:hidden;
+}
+.gallery-item{
+  aspect-ratio:9/16;
+  overflow:hidden;position:relative;
+  background:var(--card);
+}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.5s;
+  filter:saturate(0.8) brightness(0.85);
+}
+.gallery-item:hover img{transform:scale(1.06);filter:saturate(1) brightness(1)}
+.gallery-item::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(123,47,190,0.5) 0%,transparent 50%);
+}
+
+/* FEATURES GRID */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:20px;overflow:hidden;
+  margin-top:2.5rem;
+}
+.feature-cell{
+  background:var(--deep);
+  padding:1.5rem 1.2rem;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:0.6rem;
+  transition:background 0.2s;
+}
+.feature-cell:hover{background:rgba(123,47,190,0.12)}
+.feature-icon{
+  width:48px;height:48px;
+  background:rgba(168,85,247,0.12);
+  border:1px solid rgba(168,85,247,0.25);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+}
+.feature-name{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--pearl)}
+.feature-desc{font-size:0.72rem;color:var(--muted);line-height:1.5}
+
+/* SERVICES */
+.services-wrap{margin-top:2rem}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0.75rem;
+  margin-top:1.5rem;
+}
+.service-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.2rem 1rem;
+  text-align:center;
+  transition:all 0.25s;
+  cursor:pointer;
+}
+.service-card:hover{
+  border-color:rgba(168,85,247,0.5);
+  background:rgba(123,47,190,0.15);
+  transform:translateY(-2px);
+}
+.service-card .svc-icon{font-size:1.6rem;margin-bottom:0.5rem}
+.service-card .svc-name{font-size:0.78rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
+
+/* PROCESS */
+.process-steps{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+.process-step{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.process-step:last-child{border-bottom:none}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;
+  color:rgba(168,85,247,0.15);
+  line-height:1;min-width:48px;
+  flex-shrink:0;
+}
+.step-body .step-title{font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;color:var(--pearl)}
+.step-body .step-desc{font-size:0.82rem;color:var(--muted);line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials-wrap{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.testi-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:1.4rem;
+}
+.testi-stars{color:var(--gold);font-size:0.85rem;margin-bottom:0.7rem;letter-spacing:0.05em}
+.testi-quote{font-size:0.88rem;line-height:1.7;color:var(--muted);margin-bottom:1rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:0.75rem}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;
+  overflow:hidden;background:rgba(123,47,190,0.3);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;font-weight:700;color:var(--violet-light);
+}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-size:0.83rem;font-weight:700;color:var(--pearl)}
+.testi-handle{font-size:0.72rem;color:var(--violet-light)}
+
+/* PRICING */
+.pricing-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.price-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:1.5rem;
+  position:relative;overflow:hidden;
+}
+.price-card.popular{border-color:var(--violet);background:rgba(123,47,190,0.15)}
+.price-card.popular::before{
+  content:'MOST POPULAR';
+  position:absolute;top:1rem;right:1rem;
+  background:var(--violet);color:#fff;
+  font-size:0.6rem;font-weight:800;letter-spacing:0.12em;
+  padding:0.2rem 0.6rem;border-radius:50px;
+}
+.price-tag{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.5rem;color:var(--pearl);
+  display:flex;align-items:baseline;gap:0.3rem;
+  margin:0.5rem 0;
+}
+.price-tag .currency{font-size:1.2rem;color:var(--muted)}
+.price-tag .period{font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--muted);font-weight:400}
+.price-name{font-size:0.7rem;font-weight:800;letter-spacing:0.15em;color:var(--violet-light);text-transform:uppercase}
+.price-desc{font-size:0.8rem;color:var(--muted);margin:0.5rem 0 1rem;line-height:1.5}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem}
+.price-features li{font-size:0.8rem;color:var(--pearl);display:flex;align-items:center;gap:0.5rem}
+.price-features li::before{content:'✦';color:var(--violet);font-size:0.6rem;flex-shrink:0}
+
+/* PORTFOLIO SCROLL */
+.portfolio-scroll{
+  display:flex;gap:1rem;overflow-x:auto;
+  margin:2rem -1.5rem 0;
+  padding:0 1.5rem 1rem;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.portfolio-scroll::-webkit-scrollbar{display:none}
+.portfolio-thumb{
+  flex-shrink:0;width:220px;height:320px;
+  border-radius:16px;overflow:hidden;
+  position:relative;background:var(--card);
+  border:1px solid var(--border);
+}
+.portfolio-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8)}
+.portfolio-thumb-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1rem 0.8rem 0.8rem;
+  background:linear-gradient(to top,rgba(6,4,13,0.9) 0%,transparent 100%);
+  font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+}
+
+/* CTA BLOCK */
+.cta-block{
+  background:linear-gradient(135deg,rgba(123,47,190,0.3) 0%,rgba(168,85,247,0.15) 50%,rgba(245,158,11,0.08) 100%);
+  border:1px solid rgba(168,85,247,0.3);
+  border-radius:24px;
+  padding:3rem 1.5rem;
+  text-align:center;
+  margin:2rem 0;
+  position:relative;overflow:hidden;
+}
+.cta-block::before{
+  content:'';position:absolute;top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:radial-gradient(ellipse 40% 40% at 50% 50%,rgba(168,85,247,0.08) 0%,transparent 70%);
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.cta-block .cta-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.2rem,7vw,3.5rem);
+  letter-spacing:0.04em;margin-bottom:0.5rem;
+}
+.cta-block .cta-sub{font-size:0.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.cta-actions{display:flex;flex-direction:column;gap:0.75rem;align-items:center}
+.btn-wa{
+  background:#25D366;color:#000;
+  border:none;padding:1rem 2rem;border-radius:50px;
+  font-size:0.9rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;gap:0.6rem;width:100%;max-width:320px;
+  justify-content:center;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 20px rgba(37,211,102,0.3);
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,0.5)}
+.btn-ig{
+  background:linear-gradient(135deg,#833AB4,#FD1D1D,#FCAF45);
+  color:#fff;border:none;padding:1rem 2rem;border-radius:50px;
+  font-size:0.9rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;gap:0.6rem;width:100%;max-width:320px;
+  justify-content:center;
+  transition:transform 0.2s;
+  box-shadow:0 4px 20px rgba(253,29,29,0.25);
+}
+.btn-ig:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:var(--deep);
+  border-top:1px solid var(--border);
+  padding:3rem 1.5rem 5rem;
+  text-align:center;
+}
+footer .footer-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;letter-spacing:0.1em;margin-bottom:0.5rem;
+}
+footer .footer-logo span{color:var(--violet)}
+footer p{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
+.footer-contact{
+  display:flex;flex-direction:column;gap:0.5rem;
+  align-items:center;margin-bottom:2rem;
+}
+.footer-contact a{
+  color:var(--violet-light);text-decoration:none;
+  font-size:0.85rem;font-weight:600;
+  transition:color 0.2s;
+}
+.footer-contact a:hover{color:var(--gold)}
+.footer-note{font-size:0.7rem;color:rgba(248,248,255,0.25)}
+
+/* STICKY BOTTOM CTA (mobile) */
+.sticky-bottom{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(6,4,13,0.95);
+  backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);
+  padding:0.75rem 1.5rem;
+  display:flex;gap:0.75rem;
+  z-index:99;
+}
+.sticky-bottom a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:0.4rem;
+  padding:0.7rem;border-radius:50px;
+  font-size:0.8rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;
+  transition:transform 0.2s;
+}
+.sticky-bottom a:hover{transform:scale(1.03)}
+.sticky-book{background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;box-shadow:0 2px 15px rgba(168,85,247,0.35)}
+.sticky-wa{background:#25D366;color:#000}
+
+/* STATS ROW */
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  margin:2.5rem 0;
+}
+.stat-cell{
+  background:var(--deep);padding:1.2rem 0.8rem;
+  text-align:center;
+}
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;color:var(--violet-light);
+  display:block;letter-spacing:0.04em;
+}
+.stat-lbl{font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:600}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(min-width:600px){
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+  .cta-actions{flex-direction:row;justify-content:center}
+  .btn-wa,.btn-ig{width:auto}
+  .gallery-strip{grid-template-columns:repeat(6,1fr)}
+  .gallery-item{aspect-ratio:2/3}
+}
+@media(min-width:900px){
+  .hero-title .line3{-webkit-text-stroke-width:3px}
+  section{padding:6rem 2.5rem}
+  nav{padding:1.2rem 2.5rem}
+  .features-grid{grid-template-columns:repeat(4,1fr)}
+  .pricing-cards{flex-direction:row}
+  .pricing-cards .price-card{flex:1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CINEMA<span>KEZ</span></div>
+  <a href="https://wa.me/919108640935" class="nav-cta" target="_blank" rel="noopener">📞 Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grain"></div>
+  <div class="letterbox-top"></div>
+  <div class="letterbox-bottom"></div>
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">✦ Cinematic Reels · Shot on iPhone ✦</div>
+    <h1 class="hero-title">
+      <span class="line1">MOMENTS</span><br>
+      <span class="line2">INTO</span><br>
+      <span class="line3">MOTION</span>
+    </h1>
+    <p class="hero-sub">We Shoot. You Inspire.<br><strong>Cinematic reels shot on iPhone</strong></p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919108640935" class="btn-primary" target="_blank" rel="noopener">
+        🎬 Book Now
+      </a>
+      <a href="https://instagram.com" class="btn-ghost" target="_blank" rel="noopener">
+        📽 View Portfolio
+      </a>
+    </div>
+    <div class="badge-same-day">⏱ Same Day Delivery · Fast Edits. On Time. Every Time.</div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80&auto=format" alt="Wedding reel" loading="lazy"/>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&q=80&auto=format" alt="Cinematic reel" loading="lazy"/>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80&auto=format" alt="Fashion reel" loading="lazy"/>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80&auto=format" alt="Birthday reel" loading="lazy"/>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80&auto=format" alt="Corporate reel" loading="lazy"/>
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&q=80&auto=format" alt="Concert reel" loading="lazy"/>
+  </div>
+</div>
+
+<!-- ABOUT / STATS -->
+<section style="background:var(--deep)">
+  <div class="reveal">
+    <div class="section-label">About Cinemakez</div>
+    <h2 class="section-title">Grand Opening</h2>
+    <div class="divider"></div>
+    <p class="section-sub">We're Cinemakez — a premium cinematic reel agency based in India. We blend storytelling, tech, and art to craft scroll-stopping reels for brands, businesses, and special moments. Shot on iPhone. Powered by DJI Osmo Gimbal.</p>
+  </div>
+  <div class="stats-row reveal" style="margin-top:2rem">
+    <div class="stat-cell">
+      <span class="stat-num">200+</span>
+      <span class="stat-lbl">Reels Delivered</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">48H</span>
+      <span class="stat-lbl">Avg Turnaround</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">4.9★</span>
+      <span class="stat-lbl">Client Rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES / HOW WE SHOOT -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Our Technology</div>
+    <h2 class="section-title">Cinematic Toolkit</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feature-cell">
+      <div class="feature-icon">📱</div>
+      <div class="feature-name">Shot on iPhone</div>
+      <div class="feature-desc">Pro-grade cinema quality from the world's most advanced mobile camera</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🎥</div>
+      <div class="feature-name">DJI Osmo Gimbal</div>
+      <div class="feature-desc">Ultra-smooth stabilized shots for that buttery Hollywood look</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🎞</div>
+      <div class="feature-name">Cinematic Reels</div>
+      <div class="feature-desc">Colour graded, rhythm-cut, music-synced short-form video</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">✨</div>
+      <div class="feature-name">Creative Storytelling</div>
+      <div class="feature-desc">Every frame tells a story. We direct, shoot, and edit with intent</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background:var(--deep)">
+  <div class="reveal">
+    <div class="section-label">What We Create</div>
+    <h2 class="section-title">Our Services</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="svc-icon">🚗</div>
+      <div class="svc-name">Vehicle Delivery Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">💍</div>
+      <div class="svc-name">Wedding Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🎂</div>
+      <div class="svc-name">Birthday Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🏪</div>
+      <div class="svc-name">Shop Opening Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">📢</div>
+      <div class="svc-name">Promotional Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">💼</div>
+      <div class="svc-name">Business & Product Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🏢</div>
+      <div class="svc-name">Corporate Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">👗</div>
+      <div class="svc-name">Fashion & Beauty Reels</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">⭐</div>
+      <div class="svc-name">Custom Reels For Any Occasion</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SCROLL -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="divider"></div>
+    <p class="section-sub">A glimpse of the stories we've told. Every reel is a moment made unforgettable.</p>
+  </div>
+  <div class="portfolio-scroll">
+    <div class="portfolio-thumb">
+      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=440&q=80&auto=format" alt="Wedding"/>
+      <div class="portfolio-thumb-label">Wedding Reel</div>
+    </div>
+    <div class="portfolio-thumb">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=440&q=80&auto=format" alt="Birthday"/>
+      <div class="portfolio-thumb-label">Birthday Reel</div>
+    </div>
+    <div class="portfolio-thumb">
+      <img src="https://images.unsplash.com/photo-1487528278747-ba99ed528ebc?w=440&q=80&auto=format" alt="Corporate"/>
+      <div class="portfolio-thumb-label">Corporate Reel</div>
+    </div>
+    <div class="portfolio-thumb">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=440&q=80&auto=format" alt="Fashion"/>
+      <div class="portfolio-thumb-label">Fashion Reel</div>
+    </div>
+    <div class="portfolio-thumb">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=440&q=80&auto=format" alt="Business"/>
+      <div class="portfolio-thumb-label">Business Reel</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:var(--deep)">
+  <div class="reveal">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">How It Works</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <div class="step-title">Book via WhatsApp or Instagram</div>
+        <div class="step-desc">DM us or call 9108640935 to discuss your vision, date, and requirements.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <div class="step-title">We Shoot On Location</div>
+        <div class="step-desc">Our team arrives with iPhone + DJI Osmo Gimbal for cinema-quality capture.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <div class="step-title">Cinematic Editing</div>
+        <div class="step-desc">Colour grading, music sync, cuts — crafted to make every second land.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <div class="step-title">Same Day Delivery</div>
+        <div class="step-desc">Your reel, delivered on time — every time. Ready to post, ready to wow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Client Love</div>
+    <h2 class="section-title">What They Say</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="testimonials-wrap reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Absolutely blown away. Our wedding reel had 50K views in two days. Cinemakez captured emotions we didn't even notice in the moment. Pure magic."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80&auto=format" alt="Priya"/>
+        </div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-handle">@priya.weds · Wedding Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Our shop opening reel went viral in Bengaluru. Same day delivery is no joke — they delivered before I even had dinner. Unreal service."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format" alt="Rahul"/>
+        </div>
+        <div>
+          <div class="testi-name">Rahul Mehta</div>
+          <div class="testi-handle">@thegoldenshop · Business Owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"I booked a fashion reel on short notice. The team came fully prepared, the colour grading was stunning, and the reel tripled my Instagram followers."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=80&q=80&auto=format" alt="Ananya"/>
+        </div>
+        <div>
+          <div class="testi-name">Ananya Krishnan</div>
+          <div class="testi-handle">@ananya.style · Fashion Creator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="background:var(--deep)">
+  <div class="reveal">
+    <div class="section-label">Investment</div>
+    <h2 class="section-title">Pricing Plans</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Simple, transparent pricing. Contact us for custom packages and bulk deals.</p>
+  </div>
+  <div class="pricing-cards reveal">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-tag"><span class="currency">₹</span>2,999<span class="period">/reel</span></div>
+      <p class="price-desc">Perfect for birthdays, small events, and solo promotions.</p>
+      <ul class="price-features">
+        <li>1–2 hour shoot</li>
+        <li>1 edited reel (60 sec)</li>
+        <li>Basic colour grade</li>
+        <li>24hr delivery</li>
+      </ul>
+      <a href="https://wa.me/919108640935" class="btn-ghost" style="width:100%;justify-content:center;text-align:center;font-size:0.8rem;padding:0.7rem" target="_blank" rel="noopener">Book Starter</a>
+    </div>
+    <div class="price-card popular">
+      <div class="price-name">Premium</div>
+      <div class="price-tag"><span class="currency">₹</span>5,999<span class="period">/reel</span></div>
+      <p class="price-desc">For weddings, shop openings, brand shoots, and corporate events.</p>
+      <ul class="price-features">
+        <li>Half day shoot (4 hrs)</li>
+        <li>2 edited reels (60–90 sec)</li>
+        <li>Cinematic colour grade</li>
+        <li>DJI Gimbal + iPhone</li>
+        <li>Same day delivery</li>
+      </ul>
+      <a href="https://wa.me/919108640935" class="btn-primary" style="width:100%;justify-content:center;text-align:center;font-size:0.8rem;padding:0.75rem" target="_blank" rel="noopener">🎬 Book Premium</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Elite</div>
+      <div class="price-tag"><span class="currency">₹</span>Custom</div>
+      <p class="price-desc">Full day coverage, branded content series, fashion campaigns.</p>
+      <ul class="price-features">
+        <li>Full day shoot (8 hrs)</li>
+        <li>4+ edited reels</li>
+        <li>Storyboard planning</li>
+        <li>Music licensing</li>
+        <li>Priority same day delivery</li>
+        <li>Social posting strategy</li>
+      </ul>
+      <a href="https://wa.me/919108640935" class="btn-ghost" style="width:100%;justify-content:center;text-align:center;font-size:0.8rem;padding:0.7rem" target="_blank" rel="noopener">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CTA -->
+<section>
+  <div class="cta-block reveal">
+    <div class="section-label" style="text-align:center">Ready to go viral?</div>
+    <h2 class="cta-title">Let's Make Your<br>Reel Unforgettable</h2>
+    <p class="cta-sub">Contact us today. Your moment is waiting to go into motion.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/919108640935" class="btn-wa" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: 9108640935
+      </a>
+      <a href="https://instagram.com" class="btn-ig" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        DM Us on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CINEMA<span>KEZ</span></div>
+  <p>Moments Into Motion<br>Cinematic reels shot on iPhone · Bengaluru, India</p>
+  <div class="footer-contact">
+    <a href="tel:+919108640935">📞 +91 9108640935</a>
+    <a href="https://wa.me/919108640935" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">📸 Instagram — DM to Get Started</a>
+  </div>
+  <p class="footer-note">© 2025 Cinemakez. All rights reserved. · Fast Edits. On Time. Every Time.</p>
+</footer>
+
+<!-- STICKY BOTTOM -->
+<div class="sticky-bottom">
+  <a href="https://wa.me/919108640935" class="sticky-book" target="_blank" rel="noopener">🎬 Book Now</a>
+  <a href="https://wa.me/919108640935" class="sticky-wa" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+  })
+},{threshold:0.12})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+</script>
+</body>
+</html>
