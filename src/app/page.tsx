@@ -297,43 +297,51 @@ export default function Home() {
         </div>
         <div className="pricing-cards reveal">
           <div className="price-card">
-            <div className="price-name">Starter</div>
-            <div className="price-tag"><span className="currency">₹</span>2,999<span className="period">/reel</span></div>
+            <div className="price-name">Basic</div>
+            <div className="price-tag"><span className="currency">₹</span>1,999</div>
             <p className="price-desc">Perfect for birthdays, small events, and solo promotions.</p>
             <ul className="price-features">
-              <li>1–2 hour shoot</li>
-              <li>1 edited reel (60 sec)</li>
-              <li>Basic colour grade</li>
-              <li>24hr delivery</li>
-            </ul>
-            <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Book Starter</a>
-          </div>
-          <div className="price-card popular">
-            <div className="price-name">Premium</div>
-            <div className="price-tag"><span className="currency">₹</span>5,999<span className="period">/reel</span></div>
-            <p className="price-desc">For weddings, shop openings, brand shoots, and corporate events.</p>
-            <ul className="price-features">
-              <li>Half day shoot (4 hrs)</li>
-              <li>2 edited reels (60–90 sec)</li>
-              <li>Cinematic colour grade</li>
-              <li>DJI Gimbal + iPhone</li>
+              <li>1-2 hr shoot</li>
+              <li>1 edited reel</li>
               <li>Same day delivery</li>
             </ul>
-            <a href="https://wa.me/919108640935" className="btn-primary" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.75rem" }} target="_blank" rel="noopener noreferrer">🎬 Book Premium</a>
+            <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Book Basic</a>
+          </div>
+          <div className="price-card popular">
+            <div className="price-name">Standard</div>
+            <div className="price-tag"><span className="currency">₹</span>2,999</div>
+            <p className="price-desc">Perfect for brand shoots, weddings, and corporate events.</p>
+            <ul className="price-features">
+              <li>Half day coverage (up to 5 hr)</li>
+              <li>1 edited reel</li>
+              <li>Same day delivery</li>
+              <li>Complimentary Photos</li>
+            </ul>
+            <a href="https://wa.me/919108640935" className="btn-primary" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.75rem" }} target="_blank" rel="noopener noreferrer">🎬 Book Standard</a>
           </div>
           <div className="price-card">
-            <div className="price-name">Elite</div>
-            <div className="price-tag"><span className="currency">₹</span>Custom</div>
-            <p className="price-desc">Full day coverage, branded content series, fashion campaigns.</p>
+            <div className="price-name">Premium</div>
+            <div className="price-tag"><span className="currency">₹</span>4,999</div>
+            <p className="price-desc">Full day coverage for high-end events and content series.</p>
             <ul className="price-features">
-              <li>Full day shoot (8 hrs)</li>
-              <li>4+ edited reels</li>
-              <li>Storyboard planning</li>
-              <li>Music licensing</li>
-              <li>Priority same day delivery</li>
-              <li>Social posting strategy</li>
+              <li>Full day coverage (up to 8 hr)</li>
+              <li>2 edited reels</li>
+              <li>Same day delivery</li>
+              <li>Complimentary photos</li>
             </ul>
-            <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Get a Quote</a>
+            <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Book Premium</a>
+          </div>
+          <div className="price-card" style={{ borderColor: "var(--gold)" }}>
+            <div className="price-name" style={{ color: "var(--gold)" }}>Wedding Package (Limited offer)</div>
+            <div className="price-tag"><span className="currency">₹</span>7,999</div>
+            <p className="price-desc">Complete cinematic coverage for your big day.</p>
+            <ul className="price-features">
+              <li>3 events covered</li>
+              <li>3 edited reels</li>
+              <li>Same day delivery</li>
+              <li>Complimentary photos</li>
+            </ul>
+            <a href="https://wa.me/919108640935" className="btn-primary" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.75rem", background: "linear-gradient(135deg, var(--gold) 0%, var(--violet) 100%)", boxShadow: "0 4px 30px rgba(245, 158, 11, 0.3)" }} target="_blank" rel="noopener noreferrer">🎬 Book Wedding</a>
           </div>
         </div>
       </section>
