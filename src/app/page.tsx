@@ -307,7 +307,7 @@ export default function Home() {
             </ul>
             <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Book Basic</a>
           </div>
-          <div className="price-card popular">
+          <div className="price-card limited-offer">
             <div className="price-name">Standard</div>
             <div className="price-tag"><span className="currency">₹</span>2,999</div>
             <p className="price-desc">Perfect for brand shoots, weddings, and corporate events.</p>
@@ -319,7 +319,7 @@ export default function Home() {
             </ul>
             <a href="https://wa.me/919108640935" className="btn-primary" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.75rem" }} target="_blank" rel="noopener noreferrer">🎬 Book Standard</a>
           </div>
-          <div className="price-card">
+          <div className="price-card limited-offer">
             <div className="price-name">Premium</div>
             <div className="price-tag"><span className="currency">₹</span>4,999</div>
             <p className="price-desc">Full day coverage for high-end events and content series.</p>
