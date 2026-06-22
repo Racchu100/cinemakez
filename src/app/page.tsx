@@ -122,8 +122,8 @@ export default function Home() {
         </div>
         <div className="stats-row reveal" style={{ marginTop: "2rem" }}>
           <div className="stat-cell">
-            <span className="stat-num">200+</span>
-            <span className="stat-lbl">Reels Delivered</span>
+            <span className="stat-num">100%</span>
+            <span className="stat-lbl">Satisfaction Rate</span>
           </div>
           <div className="stat-cell">
             <span className="stat-num">48H</span>
