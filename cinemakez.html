@@ -301,6 +301,14 @@ section{padding:5rem 1.5rem;position:relative}
   font-size:0.6rem;font-weight:800;letter-spacing:0.12em;
   padding:0.2rem 0.6rem;border-radius:50px;
 }
+.price-card.limited-offer{border-color:var(--gold) !important;background:rgba(245,158,11,0.08)}
+.price-card.limited-offer::before{
+  content:'LIMITED OFFER';
+  position:absolute;top:1rem;right:1rem;
+  background:var(--gold);color:#000;
+  font-size:0.6rem;font-weight:800;letter-spacing:0.12em;
+  padding:0.2rem 0.6rem;border-radius:50px;
+}
 .price-tag{
   font-family:'Bebas Neue',sans-serif;
   font-size:2.5rem;color:var(--pearl);
@@ -798,8 +806,8 @@ footer p{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:1.5r
       </ul>
       <a href="https://wa.me/919108640935" class="btn-ghost" style="width:100%;justify-content:center;text-align:center;font-size:0.8rem;padding:0.7rem" target="_blank" rel="noopener">Book Premium</a>
     </div>
-    <div class="price-card" style="border-color: var(--gold)">
-      <div class="price-name" style="color: var(--gold)">Wedding Package (Limited offer)</div>
+    <div class="price-card limited-offer">
+      <div class="price-name" style="color: var(--gold)">Wedding Package</div>
       <div class="price-tag"><span class="currency">₹</span>7,999</div>
       <p class="price-desc">Complete cinematic coverage for your big day.</p>
       <ul class="price-features">

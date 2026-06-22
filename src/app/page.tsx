@@ -331,8 +331,8 @@ export default function Home() {
             </ul>
             <a href="https://wa.me/919108640935" className="btn-ghost" style={{ width: "100%", justifyContent: "center", textAlign: "center", fontSize: "0.8rem", padding: "0.7rem" }} target="_blank" rel="noopener noreferrer">Book Premium</a>
           </div>
-          <div className="price-card" style={{ borderColor: "var(--gold)" }}>
-            <div className="price-name" style={{ color: "var(--gold)" }}>Wedding Package (Limited offer)</div>
+          <div className="price-card limited-offer">
+            <div className="price-name" style={{ color: "var(--gold)" }}>Wedding Package</div>
             <div className="price-tag"><span className="currency">₹</span>7,999</div>
             <p className="price-desc">Complete cinematic coverage for your big day.</p>
             <ul className="price-features">

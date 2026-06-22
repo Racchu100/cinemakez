@@ -573,6 +573,25 @@ section {
   border-radius: 50px;
 }
 
+.price-card.limited-offer {
+  border-color: var(--gold) !important;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.price-card.limited-offer::before {
+  content: 'LIMITED OFFER';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gold);
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+}
+
 .price-tag {
   font-size: 2.5rem;
   color: var(--pearl);
